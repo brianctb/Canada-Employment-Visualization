@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-var db = mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/?retryWrites=true&w=majority`, {
+var dbconnection = mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -11,4 +11,4 @@ var db = mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.e
     console.log(err);
 });
 
-module.exports = db;
+module.exports = dbconnection;
