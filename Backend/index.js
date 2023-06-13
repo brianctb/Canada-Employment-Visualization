@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const dbconneciton = require('./database');
 const test = require('./schema/test');
 
+app.use(cors());
 
 dbconneciton.then(() => {
     app.listen(3011, () => console.log('Server running on port 3011'))
@@ -11,11 +13,8 @@ dbconneciton.then(() => {
     }
 );
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     const data = await test.find({});
-    console.log(data);
-    console.log(typeof data[0]);
-    console.log(data[0].name);
-    res.send(`${data[0].name} ${data[0].age} ${data[0].email}`);
+    res.json(data);
 });
 
