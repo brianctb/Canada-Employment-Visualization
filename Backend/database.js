@@ -1,6 +1,7 @@
-const db = require('mongoose');
+require('dotenv').config();
+const mongoose = require('mongoose');
 
-db.connect('mongodb://localhost:27017/express', {
+var db = mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -10,4 +11,4 @@ db.connect('mongodb://localhost:27017/express', {
     console.log(err);
 });
 
-exports.db = db;
+module.exports = db;

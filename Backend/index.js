@@ -7,4 +7,9 @@ app.get('/', (req, res) => {
     }
 );
 
-app.listen(3011, () => console.log('Server running on port 3011'));
+db.then(() => {
+    app.listen(3011, () => console.log('Server running on port 3011'))
+}).catch((err) => {
+    console.log(err);
+    }
+);
