@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './css/index.css';
 import Homepage from './homepage';
+import Years from './years';
 import CenterDiv from './components/center_div';
 import Button from './components/button';
 import reportWebVitals from './reportWebVitals';
@@ -25,6 +26,7 @@ root.render(
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/about' element={about_element} />
+        <Route path='/years' element={<Years />} />
       </Routes>
     </Router>
   </React.StrictMode>

@@ -7,4 +7,5 @@
     color: white;
     font-size: 2vh;
     font-weight: bold;
+    min-height: 65px; 
 }
