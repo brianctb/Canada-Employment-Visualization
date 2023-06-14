@@ -4,13 +4,13 @@ const by_industry = mongoose.model('by_industry', {
     Sort_type: {
         type: String},
     Total_Employment: {
-        type: Object},
+        type: Array},
     Hourly_wage: {
-        type: Object},
+        type: Array},
     Weekly_wage: {
-        type: Object},
+        type: Array},
     Unemployment_Rate: {
-        type: Object}
+        type: Array}
 }, "by_industry");
 
 module.exports = by_industry;
