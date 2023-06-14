@@ -4,16 +4,15 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './css/index.css';
 import Homepage from './homepage';
 import Years from './years';
+import Industries from './industry';
 import CenterDiv from './components/center_div';
 import Button from './components/button';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const header_message = "btichhhhhhhhhhhhh";
 
 const about_element = (
   <CenterDiv>
-    <h3>{header_message}</h3>
     <Button message={"Home"} />
     <Button message={"About"} />
     <Button message={"HIHI"} />
@@ -27,6 +26,7 @@ root.render(
         <Route path='/' element={<Homepage />} />
         <Route path='/about' element={about_element} />
         <Route path='/years' element={<Years />} />
+        <Route path='/industries' element={<Industries />} />
       </Routes>
     </Router>
   </React.StrictMode>
