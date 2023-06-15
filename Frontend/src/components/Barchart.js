@@ -1,20 +1,29 @@
-import {Bar} from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+Chart.register();
 
-function Barchart({object, detail}){
+
+function Barchart({ object, detail }) {
+    console.log(object);
 
     const data = {
-        labels: object[detail].map((item) => item.label),
+        labels: object["Total_Employment"].slice(0,5).map((item) => item.label),
         datasets: [
             {
-                label: detail,
-                data: object[detail].map((item) => item.value)
+                label: `Total_Employment in ${detail}`,
+                data: object["Total_Employment"].slice(0,5).map((item) => item.value)
             }
         ]
     }
 
-    return(
+    return (
         <Bar
-            data={data} options={{}}
+            data={data}
+            // height={450}
+            options={{
+                maintainAspectRatio: false
+                
+              }}
         />
     )
 }

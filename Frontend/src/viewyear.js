@@ -1,26 +1,24 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CenterDiv from "./components/center_div";
+import ChartDiv from "./components/chart_div";
+import Barchart from "./components/Barchart";
+import { Chart } from "chart.js";
 
-function Viewyear(year){
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        const fetchyear = async () => {
-            const response = await fetch('http://localhost:3011/api/by_year');
-            const jsondata = await response.json();
-            setData(jsondata);
-        };
-        fetchyear();
-    }, []);
+function Viewyear({data}){
+    const location = useLocation();
+    const { detail } = location.state;
+    const result = data.find((item) => item.Sort_type === detail);
 
     return(
-        <CenterDiv>
-            <h2>View By Year</h2>
-            {data.length === 0 ? <h3>Loading...</h3> :
-                data.map((year) => (
-                    <Button key={year.Year} message={year.Year} />
-                ))
-            }
-        </CenterDiv>
+        // <CenterDiv>
+        
+        // </CenterDiv>
+        // <div style={{ width: '90%', margin:'auto', height:'60vh'}}>
+        <ChartDiv>
+            <Barchart object={result} detail = {detail} />
+        </ChartDiv>
+        // </div>
     )
 }
 
