@@ -7,11 +7,11 @@ function Barchart({ object, detail }) {
     console.log(object);
 
     const data = {
-        labels: object["Total_Employment"].slice(0,5).map((item) => item.label),
+        labels: object["Total_Employment"].slice(0, 10).map((item) => item.label),
         datasets: [
             {
                 label: `Total_Employment in ${detail}`,
-                data: object["Total_Employment"].slice(0,5).map((item) => item.value)
+                data: object["Total_Employment"].slice(0, 10).map((item) => item.value)
             }
         ]
     }
@@ -19,11 +19,23 @@ function Barchart({ object, detail }) {
     return (
         <Bar
             data={data}
-            // height={450}
             options={{
-                maintainAspectRatio: false
-                
-              }}
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function (value) {
+                                const label = this.getLabelForValue(value);
+                                const firstspace = label.indexOf(' ');
+                                if (firstspace !== -1) {
+                                    return label.substring(0, firstspace) + "...";
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }}
         />
     )
 }
