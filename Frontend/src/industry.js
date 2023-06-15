@@ -3,17 +3,7 @@ import { useState, useEffect } from "react";
 import CenterDiv from "./components/center_div";
 import Button from "./components/button";
 
-function Industries() {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        const fetchindustry = async () => {
-            const response = await fetch('http://localhost:3011/api/by_industry');
-            const jsondata = await response.json();
-            setData(jsondata);
-        };
-        fetchindustry();
-    }, []);
-
+function Industries({data}) {
     return (
         <CenterDiv>
             <h2>View By Industry</h2>
@@ -27,3 +17,12 @@ function Industries() {
 }
 
 export default Industries;
+    // const [data, setData] = useState([]);
+    // useEffect(() => {
+    //     const fetchindustry = async () => {
+    //         const response = await fetch('http://localhost:3011/api/by_industry');
+    //         const jsondata = await response.json();
+    //         setData(jsondata);
+    //     };
+    //     fetchindustry();
+    // }, []);

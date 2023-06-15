@@ -3,17 +3,7 @@ import { useState, useEffect } from "react";
 import CenterDiv from "./components/center_div";
 import Button from "./components/button";
 
-function Years() {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        const fetchyears = async () => {
-            const response = await fetch('http://localhost:3011/api/by_year');
-            const jsondata = await response.json();
-            setData(jsondata);
-        };
-        fetchyears();
-    }, []);
-
+function Years({data}) {
     return (
         <CenterDiv>
             <h2>View By Year</h2>
@@ -27,3 +17,13 @@ function Years() {
 }
 
 export default Years;
+
+    // const [data, setData] = useState([]);
+    // useEffect(() => {
+    //     const fetchyears = async () => {
+    //         const response = await fetch('http://localhost:3011/api/by_year');
+    //         const jsondata = await response.json();
+    //         setData(jsondata);
+    //     };
+    //     fetchyears();
+    // }, []);
