@@ -13,7 +13,7 @@ function Viewyear({ data }) {
     return (
         <ChartDiv>
             <CenterDiv>
-
+                <h2>Currently showcasing</h2>
             </CenterDiv>
             <Barchart object={result} detail={detail} />
             <CenterDiv>
