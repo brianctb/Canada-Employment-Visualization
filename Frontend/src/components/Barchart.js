@@ -3,16 +3,16 @@ import Chart from 'chart.js/auto';
 Chart.register();
 
 
-function Barchart({ object, detail }) {
-    var data_type = "Total_Employment";
-    var display_text = data_type.replace("_", " ");
+function Barchart({ object, detail, selectedOption }) {
+    // console.log(selectedOption)
+    var display_text = selectedOption.replace("_", " ");
 
     const data = {
-        labels: object[data_type].slice(0, 5).map((item) => item.label),
+        labels: object[selectedOption].slice(0, 5).map((item) => item.label),
         datasets: [
             {
                 label: `${display_text} in ${detail}`,
-                data: object[data_type].slice(0, 5).map((item) => item.value),
+                data: object[selectedOption].slice(0, 5).map((item) => item.value),
                 backgroundColor: "rgb(255, 120, 0)"
             }
         ]
@@ -32,11 +32,15 @@ function Barchart({ object, detail }) {
                 ticks: {
                     callback: function (value) {
                         const label = this.getLabelForValue(value);
-                        const firstspace = label.indexOf(' ');
-                        if (firstspace !== -1) {
-                            return label.substring(0, firstspace) + "...";
+                        const firstspace = label.indexOf(' ')
+                        const firsthyphen = label.indexOf('-');
+                        if (firstspace !== -1 || firsthyphen !== -1) {
+                            return (firstspace !== -1 && firsthyphen !== -1)
+                                ? (firstspace < firsthyphen ? label.substring(0, firstspace) : label.substring(0, firsthyphen)) + "..."
+                                : (firstspace !== -1 ? label.substring(0, firstspace) : label.substring(0, firsthyphen)) + "...";
+                        } else {
+                            return label;
                         }
-                        return label;
                     },
                     color: "rgba(255, 255, 255, 0.908)",
                 },
