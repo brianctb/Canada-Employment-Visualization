@@ -1,18 +1,33 @@
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import Pagination from './pagination';
+import Center_div from './center_div';
+import { useEffect, useState } from 'react';
 Chart.register();
 
 
 function Barchart({ object, detail, selectedOption }) {
-    // console.log(selectedOption)
+
     var display_text = selectedOption.replace("_", " ");
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    }
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedOption])
+
+    const limit = 5;
+    const size = object[selectedOption].length;
+
     const data = {
-        labels: object[selectedOption].slice(0, 5).map((item) => item.label),
+        labels: object[selectedOption].slice(limit * (currentPage - 1), limit * (currentPage)).map((item) => item.label),
         datasets: [
             {
                 label: `${display_text} in ${detail}`,
-                data: object[selectedOption].slice(0, 5).map((item) => item.value),
+                data: object[selectedOption].slice(limit * (currentPage - 1), limit * (currentPage)).map((item) => item.value),
                 backgroundColor: "rgb(255, 120, 0)"
             }
         ]
@@ -54,7 +69,12 @@ function Barchart({ object, detail, selectedOption }) {
     }
 
     return (
-        <Bar data={data} options={options} />
+        <>
+            <Bar data={data} options={options} />
+            <Center_div>
+                <Pagination size={size} limit={limit} currentPage={currentPage} onPageChange={handlePageChange} />
+            </Center_div>
+        </>
     )
 }
 

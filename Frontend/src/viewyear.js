@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import CenterDiv from "./components/center_div";
 import ChartDiv from "./components/chart_div";
@@ -16,7 +16,7 @@ function Viewyear({ data }) {
         value: name, label: name.replace("_", " ")
     }));
 
-    
+
     const [selectedOption, setSelectedOption] = useState(options[0].value);
     const handleDropdownChange = (selectedOption) => {
         setSelectedOption(selectedOption.value);
@@ -42,7 +42,6 @@ function Viewyear({ data }) {
             </CenterDiv>
             <Barchart object={result} detail={detail} selectedOption={selectedOption} />
             <CenterDiv>
-
             </CenterDiv>
         </ChartDiv>
     )
