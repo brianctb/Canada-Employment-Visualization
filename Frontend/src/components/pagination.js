@@ -1,5 +1,8 @@
+import '../css/pagination.css';
+
 function Pagination({ size, limit, currentPage, onPageChange }) {
     const endpage = Math.ceil(size / limit);
+    const buttonsclass = ["pagination_button"];
 
     const handleClick = (e) => {
         let newPage;
@@ -14,19 +17,34 @@ function Pagination({ size, limit, currentPage, onPageChange }) {
         if (currentPage == 1) {
             for (let i = 1; i <= 3; i++) {
                 pageNumbers.push(
-                    <button className="pagination_button" key={i} value={i} onClick={handleClick}>{i}</button>
+                    <button 
+                    className={(i==currentPage)
+                    ? ["selectedpage", ...buttonsclass].join(" ") 
+                    : buttonsclass} 
+                    key={i} value={i} onClick={handleClick}>{i}
+                    </button>
                 );
             }
         } else if (currentPage == endpage) {
             for (let i = endpage - 2; i <= endpage; i++) {
                 pageNumbers.push(
-                    <button className="pagination_button" key={i} value={i} onClick={handleClick}>{i}</button>
+                    <button 
+                    className={(i==currentPage)
+                    ? ["selectedpage", ...buttonsclass].join(" ") 
+                    : buttonsclass} 
+                    key={i} value={i} onClick={handleClick}>{i}
+                    </button>
                 );
             }
         } else {
             for (let i = currentPage - 1; i <= currentPage + 1; i++) {
                 pageNumbers.push(
-                    <button className="pagination_button" key={i} value={i} onClick={handleClick}>{i}</button>
+                    <button 
+                    className={(i==currentPage)
+                    ? ["selectedpage", ...buttonsclass].join(" ") 
+                    : buttonsclass} 
+                    key={i} value={i} onClick={handleClick}>{i}
+                    </button>
                 );
             }
         }

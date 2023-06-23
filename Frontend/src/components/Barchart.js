@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import Pagination from './pagination';
-import Center_div from './center_div';
+import '../css/general.css'
 import { useEffect, useState } from 'react';
 Chart.register();
 
@@ -77,9 +77,9 @@ function Barchart({ object, detail, selectedOption }) {
     return (
         <>
             <Bar data={data} options={options} />
-            <Center_div>
+            <div className='center_div_fullsize'>
                 <Pagination size={size} limit={limit} currentPage={currentPage} onPageChange={handlePageChange} />
-            </Center_div>
+            </div>
         </>
     )
 }
