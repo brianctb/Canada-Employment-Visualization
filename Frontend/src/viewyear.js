@@ -4,6 +4,7 @@ import CenterDiv from "./components/center_div";
 import ChartDiv from "./components/chart_div";
 import Barchart from "./components/Barchart";
 import Select from "react-select";
+import './css/general.css'
 
 function Viewyear({ data }) {
     const location = useLocation();
@@ -38,7 +39,7 @@ function Viewyear({ data }) {
         <ChartDiv>
             <CenterDiv>
                 <h3>Pleaes select the dataset:</h3>
-                <Select placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
+                <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
             </CenterDiv>
             <Barchart object={result} detail={detail} selectedOption={selectedOption} />
             <CenterDiv>
