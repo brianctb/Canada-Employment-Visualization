@@ -20,14 +20,20 @@ function Barchart({ object, detail, selectedOption }) {
     }, [selectedOption])
 
     const limit = 5;
-    const size = object[selectedOption].length;
+    const selectedData = object[selectedOption];
+    const size = selectedData.length;
+    const prevSlice = selectedData.slice(limit * (currentPage - 2), limit * (currentPage - 1));
+    let slices = selectedData.slice(limit * (currentPage - 1), limit * (currentPage));
+    slices = slices.length < limit
+        ? [...prevSlice.slice(-(limit - slices.length)), ...slices]
+        : slices
 
     const data = {
-        labels: object[selectedOption].slice(limit * (currentPage - 1), limit * (currentPage)).map((item) => item.label),
+        labels: slices.map((item) => item.label),
         datasets: [
             {
                 label: `${display_text} in ${detail}`,
-                data: object[selectedOption].slice(limit * (currentPage - 1), limit * (currentPage)).map((item) => item.value),
+                data: slices.map((item) => item.value),
                 backgroundColor: "rgb(255, 120, 0)"
             }
         ]

@@ -38,7 +38,7 @@ function Viewyear({ data }) {
         <ChartDiv>
             <CenterDiv>
                 <h3>Pleaes select the dataset:</h3>
-                <Select placeholder={selectedOption} options={options} styles={styles} onChange={handleDropdownChange} />
+                <Select placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
             </CenterDiv>
             <Barchart object={result} detail={detail} selectedOption={selectedOption} />
             <CenterDiv>
