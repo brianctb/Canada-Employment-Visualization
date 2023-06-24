@@ -5,7 +5,7 @@ import './css/index.css';
 import Homepage from './homepage';
 import Years from './years';
 import Industries from './industry';
-import Viewyear from './viewyear';
+import View from './view';
 import CenterDiv from './components/center_div';
 import Button from './components/button';
 import reportWebVitals from './reportWebVitals';
@@ -40,8 +40,9 @@ fetchdata()
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/years' element={<Years data={yeardata} />} />
+            <Route path='/viewyear' element={<View data={yeardata} filter={'year'} />} />
             <Route path='/industries' element={<Industries data={industrydata} />} />
-            <Route path='/viewyear' element={<Viewyear data={yeardata} />} />
+            <Route path='/viewindustry' element={<View data={industrydata} filter={'industry'}/>} />
           </Routes>
         </Router>
       </React.StrictMode>

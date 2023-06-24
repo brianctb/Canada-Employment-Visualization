@@ -6,17 +6,16 @@ import Barchart from "./components/Barchart";
 import Select from "react-select";
 import './css/general.css'
 
-function Viewyear({ data }) {
+function View({ data, filter }) {
     const location = useLocation();
     const { detail } = location.state;
     const result = data.find((item) => item.Sort_type === detail);
 
     const options = Object.keys(result).filter(
-        names => (names !== "Sort_type" && names !== "_id")
+        names => (names !== "Sort_type" && names !== "_id" && result[names].length !== 0)
     ).map(name => ({
         value: name, label: name.replace("_", " ")
     }));
-
 
     const [selectedOption, setSelectedOption] = useState(options[0].value);
     const handleDropdownChange = (selectedOption) => {
@@ -48,4 +47,4 @@ function Viewyear({ data }) {
     )
 }
 
-export default Viewyear;
+export default View;
