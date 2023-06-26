@@ -47,12 +47,10 @@ function Charts({ object, detail, selectedOption, charttype }) {
             tooltip: {
                 callbacks: {
                     label: function (e) {
-                        console.log(e)
-                        const maxtokens = 2;
+                        const maxtokens = 4;
                         const label = e.dataset.label;
                         const tokens = label.split(" ");
                         const optionTokens = display_text.split(" ").length;
-                        console.log(tokens)
                         return (tokens.length > maxtokens)
                         ?(tokens.slice(0, maxtokens+optionTokens).join(" ") + "... : " + e.formattedValue) 
                         : tokens.join(" ");
