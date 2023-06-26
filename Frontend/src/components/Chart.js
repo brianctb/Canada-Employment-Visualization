@@ -53,7 +53,7 @@ function Charts({ object, detail, selectedOption, charttype }) {
                         const optionTokens = display_text.split(" ").length;
                         return (tokens.length > maxtokens)
                         ?(tokens.slice(0, maxtokens+optionTokens).join(" ") + "... : " + e.formattedValue) 
-                        : tokens.join(" ");
+                        : label + " : " + e.formattedValue;
                     }
                 }
             },
