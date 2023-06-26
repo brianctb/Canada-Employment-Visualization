@@ -40,9 +40,9 @@ fetchdata()
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/years' element={<Years data={yeardata} />} />
-            <Route path='/viewyear' element={<View data={yeardata} filter={'year'} />} />
+            <Route path='/viewyear' element={<View data={yeardata} charttype={'bar'} />} />
             <Route path='/industries' element={<Industries data={industrydata} />} />
-            <Route path='/viewindustry' element={<View data={industrydata} filter={'industry'}/>} />
+            <Route path='/viewindustry' element={<View data={industrydata} charttype={'line'}/>} />
           </Routes>
         </Router>
       </React.StrictMode>

@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 import CenterDiv from "./components/center_div";
 import ChartDiv from "./components/chart_div";
 import Barchart from "./components/Barchart";
+import Linechart from "./components/linechart";
 import Select from "react-select";
 import './css/general.css'
 
-function View({ data, filter }) {
+function View({ data, charttype }) {
     const location = useLocation();
     const { detail } = location.state;
     const result = data.find((item) => item.Sort_type === detail);
@@ -40,9 +41,9 @@ function View({ data, filter }) {
                 <h3>Pleaes select the dataset:</h3>
                 <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
             </CenterDiv>
-            <Barchart object={result} detail={detail} selectedOption={selectedOption} />
-            <CenterDiv>
-            </CenterDiv>
+            {charttype == "bar" 
+            ?(<Barchart object={result} detail={detail} selectedOption={selectedOption} />)
+            :(<Linechart object={result} detail={detail} selectedOption={selectedOption} />)}
         </ChartDiv>
     )
 }

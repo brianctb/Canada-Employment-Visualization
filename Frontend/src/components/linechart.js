@@ -1,12 +1,11 @@
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import Pagination from './pagination';
 import '../css/general.css'
 import { useEffect, useState } from 'react';
+import Pagination from './pagination';
 Chart.register();
 
-
-function Barchart({ object, detail, selectedOption }) {
+function Linechart({ object, detail, selectedOption }) {
     var display_text = selectedOption.replace("_", " ");
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,10 +17,10 @@ function Barchart({ object, detail, selectedOption }) {
         setCurrentPage(1);
     }, [selectedOption])
 
-    const limit = 5;
+    const limit = 11;
     const selectedData = object[selectedOption];
-    console.log(selectedData);
     const selectedData_sorted = selectedData.sort((a, b) => a.label.localeCompare(b.label));
+
     const size = selectedData_sorted.length;
     const prevSlice = selectedData_sorted.slice(limit * (currentPage - 2), limit * (currentPage - 1));
     let slices = selectedData_sorted.slice(limit * (currentPage - 1), limit * (currentPage));
@@ -77,8 +76,8 @@ function Barchart({ object, detail, selectedOption }) {
 
     return (
         <>
-            <Bar data={data} options={options} />
-            {(selectedData_sorted.length > limit)
+            <Line data={data} options={options} />
+            {(selectedData_sorted > limit)
                 ? (<div className='center_div_fullsize'>
                     <Pagination size={size} limit={limit} currentPage={currentPage} onPageChange={handlePageChange} />
                 </div>)
@@ -88,4 +87,4 @@ function Barchart({ object, detail, selectedOption }) {
     )
 }
 
-export default Barchart;
+export default Linechart;
