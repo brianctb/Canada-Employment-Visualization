@@ -1,5 +1,5 @@
 import { Bar, Line } from 'react-chartjs-2';
-import {Chart} from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
 import Pagination from './pagination';
 import '../css/general.css'
 import { useEffect, useState } from 'react';
@@ -34,7 +34,9 @@ function Charts({ object, detail, selectedOption, charttype }) {
             {
                 label: `${display_text} in ${detail}`,
                 data: slices.map((item) => item.value),
-                backgroundColor: "rgb(255, 120, 0)"
+                backgroundColor: charttype == "bar"
+                ? "rgb(255, 120, 0)"
+                : "rgba(255, 255, 255, 0.908)"
             }
         ]
     }
@@ -45,7 +47,7 @@ function Charts({ object, detail, selectedOption, charttype }) {
             legend: {
                 labels: {
                     color: "rgba(255, 255, 255, 0.908)",
-                }
+                },
             }
         },
         scales: {
@@ -71,14 +73,20 @@ function Charts({ object, detail, selectedOption, charttype }) {
                     color: "rgba(255, 255, 255, 0.908)",
                 }
             }
+        },
+        elements: {
+            line: {
+                borderColor: "rgb(255, 120, 0)",
+                borderWidth: 2.5, 
+            }
         }
     }
 
     return (
         <>
             {charttype == "bar"
-            ?<Bar data={data} options={options} />
-            :<Line data={data} options={options} />}
+                ? <Bar data={data} options={options} />
+                : <Line data={data} options={options} />}
             {(selectedData_sorted.length > limit)
                 ? (<div className='center_div_fullsize'>
                     <Pagination size={size} limit={limit} currentPage={currentPage} onPageChange={handlePageChange} />

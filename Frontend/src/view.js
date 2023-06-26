@@ -40,7 +40,7 @@ function View({ data, charttype }) {
                 <h3>Pleaes select the dataset:</h3>
                 <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
             </CenterDiv>
-            (<Charts object={result} detail={detail} selectedOption={selectedOption} charttype={charttype} />)
+            <Charts object={result} detail={detail} selectedOption={selectedOption} charttype={charttype} />
         </ChartDiv>
     )
 }
