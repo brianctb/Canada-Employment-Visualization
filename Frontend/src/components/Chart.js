@@ -35,8 +35,8 @@ function Charts({ object, detail, selectedOption, charttype }) {
                 label: `${display_text} in ${detail}`,
                 data: slices.map((item) => item.value),
                 backgroundColor: charttype == "bar"
-                ? "rgb(255, 120, 0)"
-                : "rgba(255, 255, 255, 0.908)"
+                    ? "rgb(255, 120, 0)"
+                    : "rgba(255, 255, 255, 0.908)"
             }
         ]
     }
@@ -44,6 +44,21 @@ function Charts({ object, detail, selectedOption, charttype }) {
     const options = {
         maintainAspectRatio: false,
         plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function (e) {
+                        console.log(e)
+                        const maxtokens = 2;
+                        const label = e.dataset.label;
+                        const tokens = label.split(" ");
+                        const optionTokens = display_text.split(" ").length;
+                        console.log(tokens)
+                        return (tokens.length > maxtokens)
+                        ?(tokens.slice(0, maxtokens+optionTokens).join(" ") + "... : " + e.formattedValue) 
+                        : tokens.join(" ");
+                    }
+                }
+            },
             legend: {
                 labels: {
                     color: "rgba(255, 255, 255, 0.908)",
@@ -77,7 +92,7 @@ function Charts({ object, detail, selectedOption, charttype }) {
         elements: {
             line: {
                 borderColor: "rgb(255, 120, 0)",
-                borderWidth: 2.5, 
+                borderWidth: 2.5,
             }
         }
     }
