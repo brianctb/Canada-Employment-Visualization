@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import CenterDiv from "./components/center_div";
 import ChartDiv from "./components/chart_div";
-import Barchart from "./components/Barchart";
-import Linechart from "./components/linechart";
+import Charts from "./components/Chart";
 import Select from "react-select";
 import './css/general.css'
 
@@ -41,9 +40,7 @@ function View({ data, charttype }) {
                 <h3>Pleaes select the dataset:</h3>
                 <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
             </CenterDiv>
-            {charttype == "bar" 
-            ?(<Barchart object={result} detail={detail} selectedOption={selectedOption} />)
-            :(<Linechart object={result} detail={detail} selectedOption={selectedOption} />)}
+            (<Charts object={result} detail={detail} selectedOption={selectedOption} charttype={charttype} />)
         </ChartDiv>
     )
 }
