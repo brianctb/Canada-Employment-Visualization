@@ -4,6 +4,7 @@ import CenterDiv from "./components/center_div";
 import ChartDiv from "./components/chart_div";
 import Charts from "./components/Chart";
 import Select from "react-select";
+import BottomNav from "./bottomNav";
 import './css/general.css'
 
 function View({ data, charttype }) {
@@ -35,13 +36,16 @@ function View({ data, charttype }) {
     }
 
     return (
-        <ChartDiv>
-            <CenterDiv>
-                <h3>Pleaes select the dataset:</h3>
-                <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
-            </CenterDiv>
-            <Charts object={result} detail={detail} selectedOption={selectedOption} charttype={charttype} />
-        </ChartDiv>
+        <>
+            <ChartDiv>
+                <CenterDiv>
+                    <h3>Pleaes select the dataset:</h3>
+                    <Select className={"general_bot_margin"} placeholder={selectedOption.replace("_", " ")} options={options} styles={styles} onChange={handleDropdownChange} />
+                </CenterDiv>
+                <Charts object={result} detail={detail} selectedOption={selectedOption} charttype={charttype} />
+            </ChartDiv>
+            <BottomNav />
+        </>
     )
 }
 

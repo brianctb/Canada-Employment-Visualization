@@ -11,3 +11,31 @@
 .general_bot_margin {
     margin-bottom: 3vh;
 }
+
+.roundbtn{
+    border-radius: 100%;
+    width: 9vh;
+    height: 9vh;
+    background-color: grey;
+    border: transparent;
+    opacity: 0.85;
+}
+
+.roundbtn img{
+    width: 70%;
+    height: auto;
+}
+
+.bottomNav{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    justify-content: space-around;
+    text-align: center;
+    padding-bottom: 3vh;
+    z-index: 1000;
+    gap: 15vh;
+}

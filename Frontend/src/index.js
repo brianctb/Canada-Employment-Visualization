@@ -6,8 +6,6 @@ import Homepage from './homepage';
 import Years from './years';
 import Industries from './industry';
 import View from './view';
-import CenterDiv from './components/center_div';
-import Button from './components/button';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
