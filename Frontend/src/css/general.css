@@ -14,15 +14,15 @@
 
 .roundbtn{
     border-radius: 100%;
-    width: 9vh;
-    height: 9vh;
+    width: 8vh;
+    height: 8vh;
     background-color: grey;
     border: transparent;
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 .roundbtn img{
-    width: 70%;
+    width: 60%;
     height: auto;
 }
 

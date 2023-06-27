@@ -17,8 +17,8 @@ function BottomNav(){
 
     return(
     <div className="bottomNav">
-        <Roundbtn img="/logo192.png" onClick={goBack} msg="back"/>
-        <Roundbtn img="/logo192.png" onClick={goHome} msg="home"/>
+        <Roundbtn img="/back.png" onClick={goBack} msg="back"/>
+        <Roundbtn img="/home.png" onClick={goHome} msg="home"/>
     </div>
     );    
 }
