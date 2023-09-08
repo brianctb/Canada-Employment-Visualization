@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dbconneciton = require('./database');
-const test = require('./schema/test');
 const by_year = require('./schema/by_year');
 const by_industry = require('./schema/by_industry');
 
@@ -12,12 +11,11 @@ dbconneciton.then(() => {
     app.listen(3011, () => console.log('Server running on port 3011'))
 }).catch((err) => {
     console.log(err);
-    }
+}
 );
 
-app.get('/api', async (req, res) => {
-    const data = await test.find({});
-    res.json(data);
+app.get('/', async (req, res) => {
+    res.send("hello world");
 });
 
 app.get('/api/by_year', async (req, res) => {
