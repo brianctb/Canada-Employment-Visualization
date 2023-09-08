@@ -11,13 +11,13 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const fetchYear = async () => {
-  const response = await fetch('https://sun-hat-cuttlefish.cyclic.cloud/api/by_year');
+  const response = await fetch('https://puce-giant-rhinoceros.cyclic.app/api/by_year');
   const yeardata = await response.json();
   return yeardata;
 };
 
 const fetchIndustries = async () => {
-  const response = await fetch('https://sun-hat-cuttlefish.cyclic.cloud/api/by_industry');
+  const response = await fetch('https://puce-giant-rhinoceros.cyclic.app/api/by_industry');
   const industrydata = await response.json();
   return industrydata;
 };
