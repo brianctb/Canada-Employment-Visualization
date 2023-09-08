@@ -17,7 +17,7 @@ function Homepage() {
         <>
             <CenterDiv>
                 <h2>View Canada's Employment data from the following.</h2>
-                <Button message={"View All Industries"} />
+                {/* <Button message={"View All Industries"} /> */}
                 <Button message={"View By Industry"} onClick={navigateToindusries} />
                 <Button message={"View By Year"} onClick={navigateToyears} />
             </CenterDiv>
