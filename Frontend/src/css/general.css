@@ -1,7 +1,8 @@
 .center_div_fullsize {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     margin-top: 3vh;
+    margin-bottom: 3vh;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -12,7 +13,7 @@
     margin-bottom: 3vh;
 }
 
-.roundbtn{
+.roundbtn {
     border-radius: 100%;
     width: 8vh;
     height: 8vh;
@@ -21,12 +22,12 @@
     opacity: 0.8;
 }
 
-.roundbtn img{
+.roundbtn img {
     width: 60%;
     height: auto;
 }
 
-.bottomNav{
+.bottomNav {
     display: flex;
     flex-direction: row;
     position: fixed;
