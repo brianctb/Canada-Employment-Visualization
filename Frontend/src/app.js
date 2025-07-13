@@ -11,8 +11,16 @@ const App = () => {
   const [yeardata, setYearData] = useState(null);
   const [industrydata, setIndustryData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dots, setDots] = useState("");
 
   useEffect(() => {
+    const dotInterval = setInterval(() => {
+      setDots((prev) => {
+        if (prev.length >= 3) return "";
+        return prev + ".";
+      });
+    }, 500);
+
     const fetchData = async () => {
       try {
         const [yearRes, industryRes] = await Promise.all([
@@ -30,16 +38,20 @@ const App = () => {
       } catch (err) {
         console.error("Failed to load data:", err);
       } finally {
+        clearInterval(dotInterval);
         setLoading(false);
       }
     };
 
     fetchData();
+
+    return () => clearInterval(dotInterval);
   }, []);
 
   return loading ? (
     <CenterDiv>
-      <h2>Server starting...</h2>
+      <h2>Server starting{dots}</h2>
+      <p>This might take 20-30 seconds</p>
     </CenterDiv>
   ) : (
     <Routes>
